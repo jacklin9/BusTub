@@ -105,7 +105,7 @@ class DiskManager {
   int num_deletes_{0};
 
   /** @brief The capacity of the file used for storage on disk. */
-  size_t page_capacity_{DEFAULT_DB_IO_SIZE};
+  size_t page_capacity_{DEFAULT_DB_IO_SIZE};    // In page size 8K
 
  private:
   auto GetFileSize(const std::string &file_name) -> int;

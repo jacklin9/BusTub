@@ -90,7 +90,7 @@ class TransactionManager {
   /** Catalog */
   Catalog *catalog_;
 
-  std::atomic<txn_id_t> next_txn_id_{TXN_START_ID};
+  std::atomic<txn_id_t> next_txn_id_{TXN_START_ID}; // Transaction ID
 
  private:
   auto VerifyTxn(Transaction *txn) -> bool;

@@ -60,7 +60,7 @@ auto BusTubInstance::MakeExecutorContext(Transaction *txn, bool is_modify) -> st
                                            lock_manager_.get(), is_modify);
 }
 
-BusTubInstance::BusTubInstance(const std::filesystem::path &db_file_name, size_t bpm_size) {
+BusTubInstance::BusTubInstance(const std::filesystem::path &db_file_name, size_t bpm_size) {    // bpm_size = BUFFER_POOL_SIZE
   enable_logging = false;
 
   // Storage related.
@@ -68,7 +68,7 @@ BusTubInstance::BusTubInstance(const std::filesystem::path &db_file_name, size_t
 
 #ifndef DISABLE_CHECKPOINT_MANAGER
   // Log related.
-  log_manager_ = std::make_unique<LogManager>(disk_manager_.get());
+  log_manager_ = std::make_unique<LogManager>(disk_manager_.get()); // Not transaction log, it is system log
 #endif
 
   // We need more frames for GenerateTestTable to work. Therefore, we use 128 instead of the default
